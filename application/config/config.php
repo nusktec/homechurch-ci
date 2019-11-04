@@ -523,11 +523,11 @@ $config['proxy_ips'] = '';
 
 //constant meta data
 $config['meta'] = array(
-    'title' => 'Presta Sheet',
-    'app' => 'PSA',
-    'desc' => 'Presents Sheet Made Easy',
+    'title' => 'Home Church',
+    'app' => 'HMC',
+    'desc' => 'Online Fellowship',
     'author' => 'RSC BYTE LTD',
-    'su-email' => 'support@rscbyte.com'
+    'su-email' => 'support@sotirtech.com'
 );
 //system control
 const SESSION_NAME = "user";

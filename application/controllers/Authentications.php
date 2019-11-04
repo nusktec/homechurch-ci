@@ -30,7 +30,6 @@ class Authentications extends CI_Controller
         $this->load->library("auth");
         //load models
         $this->load->model('muser');
-        $this->load->model('minst');
     }
 
     //welcome page as index
@@ -74,7 +73,6 @@ class Authentications extends CI_Controller
         }
         //define dynamics metas
         $meta['title'] = 'Create Account';
-        $meta['minst'] = $this->minst->getInstitutions();
         $meta['menu_num'] = -1;
         $this->load->view('page-create', $meta);
     }

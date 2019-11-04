@@ -59,7 +59,9 @@
                                     <select :disabled="disabled" v-model="user.country" name="country"
                                             class="form-control">
                                         <option selected value="">Choose</option>
-                                        <option value="M">Male</option>
+                                        <?php
+                                        include 'misc.country.php';
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-6">
@@ -130,7 +132,7 @@
                         pass2: "",
                         country: '',
                         state: '',
-                        address: ''
+                        address: 'No address'
                     },
                     disabled: false,
                     info: "",

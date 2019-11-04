@@ -25,7 +25,7 @@
         </svg>
     </a>
     <div class="navbar-brand">
-        <a href="" class="df-logo">Presta<span>Sheet</span></a>
+        <a href="" class="df-logo">Home<span>Church</span></a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
         <div class="navbar-menu-header">
@@ -98,7 +98,9 @@
                             </div><!-- media -->
                         </a>
                     <?php } ?>
-                    <div class="dropdown-footer"><a href="#" onclick="clearNotifications('<?php echo @$uid; ?>','<? echo $values['mid'] ?>')">View all Messages</a></div>
+                    <div class="dropdown-footer"><a href="#"
+                                                    onclick="clearNotifications('<?php echo @$uid; ?>','<? echo $values['mid'] ?>')">View
+                            all Messages</a></div>
                 </div><!-- dropdown-menu -->
             </div><!-- dropdown -->
 
@@ -146,7 +148,8 @@
                                 src="<?php echo base_url(); ?>assets/img/profiles/<?php echo @$avatar; ?>"
                                 class="rounded-circle" alt=""></div>
                     <h6 class="tx-semibold mg-b-5"><?php echo @$user['uname']; ?></h6>
-                    <p class="mg-b-25 tx-12 tx-color-03"><?php echo @$user['utype'] === 1 ? 'student' : 'lecturer'; ?>@<?php echo @strtolower($institute['inick']); ?></p>
+                    <p class="mg-b-25 tx-12 tx-color-03"><?php echo @$user['utype'] === 1 ? 'student' : 'lecturer'; ?>
+                        @<?php echo @strtolower($institute['inick']); ?></p>
 
                     <a href="#" class="dropdown-item"><i data-feather="edit-3"></i> Edit Profile</a>
                     <a href="#" class="dropdown-item"><i data-feather="user"></i> View Profile</a>

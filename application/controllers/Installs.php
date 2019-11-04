@@ -85,6 +85,11 @@ class Installs extends CI_Controller
                 'type' => 'VARCHAR',
                 'constraint' => '200',
             ),
+            'uaddress' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '500',
+                'null' => true
+            ),
             'ugender' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
