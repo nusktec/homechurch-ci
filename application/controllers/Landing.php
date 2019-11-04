@@ -24,25 +24,41 @@ class Landing extends CI_Controller
     {
         parent::__construct();
         //begin load libraries
+        $this->load->database();
         $this->load->library('jsonparser', null, 'json');
         $this->load->library("auth");
-        //load necessary library
-        $this->auth->islogged(true);
+        //load models
+        $this->load->model('muser');
     }
 
     //sign in methods
     public function index()
     {
-        //define dynamics metas
-        $meta['title'] = 'Home';
-        $this->load->view('users/page-home', $meta);
+        if ($this->auth->islogged()) {
+            //load next class based on user logged in user
+            if ($this->auth->getUser() && (int)$this->auth->getUser()['utype'] === 1) {
+                redirect(base_url('user'));
+            } else {
+                redirect(base_url('super'));
+            }
+        } else {
+            //redirect to welcome
+            redirect(base_url('welcome'));
+        }
     }
 
     //logout
     public function logout()
     {
+        $this->auth->islogged(true);
         //clear session and set to login
         $this->auth->logout();
         redirect(base_url());
+    }
+
+    //404 error page
+    public function error_404()
+    {
+        $this->load->view('errors/html/error_404');
     }
 }

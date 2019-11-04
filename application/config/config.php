@@ -378,11 +378,11 @@ $config['encryption_key'] = '';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'rsc_session';
-$config['sess_expiration'] = 0;
-$config['sess_save_path'] = 'session_tmp';
-$config['sess_match_ip'] = FALSE;
+$config['sess_expiration'] = 7200;
+$config['sess_save_path'] = APPPATH . 'cache/';
+$config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_regenerate_destroy'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -523,11 +523,14 @@ $config['proxy_ips'] = '';
 
 //constant meta data
 $config['meta'] = array(
-    'app' => 'HCW',
-    'desc' => 'Dunamis Online Live Home Church',
+    'title' => 'Presta Sheet',
+    'app' => 'PSA',
+    'desc' => 'Presents Sheet Made Easy',
     'author' => 'RSC BYTE LTD',
-    'su-email' => 'support@sotir.org'
+    'su-email' => 'support@rscbyte.com'
 );
 //system control
+const SESSION_NAME = "user";
 const show_error_code = true;
 const allow_turbolinks = false;
+const assets_path = "assets";

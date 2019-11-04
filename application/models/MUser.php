@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Developer: RSC Byte Limted
@@ -29,8 +30,10 @@ class MUser extends CI_Model
         $this->db->set('uemail', $data['email']);
         $this->db->set('uphone', $data['phone']);
         $this->db->set('upass', sha1($data['pass1']));
-        $this->db->set('udob', $data['dob']);
         $this->db->set('ugender', $data['gender']);
+        $this->db->set('ucountry', $data['country']);
+        $this->db->set('ustate', $data['state']);
+        $this->db->set('uaddress', $data['address']);
         $this->db->insert($this->userTable);
         return true;
     }
@@ -60,15 +63,63 @@ class MUser extends CI_Model
         return $res->row_array();
     }
 
+
     //user rest updates
     public function reset($rdata = null)
     {
         return $this->db->on_duplicate($this->userReset, array('ruemail' => $rdata['ruemail'], 'rtoken' => $rdata['rtoken'], 'rstatus' => 0));
     }
 
-    //reset table update and verify
-    public function resetupdate($token, $updat = false)
+    //verify reset token
+    public function verifyToken($token)
     {
+        $this->db->where("rtoken", $token);
+        $this->db->where("rstatus", 0);
+        $this->db->from($this->userReset);
+        $this->db->join($this->userTable, $this->userTable . ".uemail=" . $this->userReset . ".ruemail");
+        $res = $this->db->get();
+        return $res->row_array();
+    }
 
+    //reset table update and verify
+    public function updatePassword($pass, $token)
+    {
+        //re-verify token supplied
+        $conf_token = $this->verifyToken($token);
+        if ($conf_token) {
+            //change password
+            $this->db->set("upass", sha1($pass));
+            $this->db->where("uemail", $conf_token['uemail']);
+            $this->db->update($this->userTable);
+            //update reset table now
+            $this->db->set("rstatus", 1, FALSE);
+            $this->db->where("ruemail", $conf_token['uemail']);
+            $this->db->update($this->userReset);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //get profile image
+    public function profileImg($id = 0, $g = "M")
+    {
+        //convert id to sha1 for image lookup
+        $g = ($g == "F" ? 'av_girl' : 'av_man');
+        //check of real image exist
+        $imagepath = assets_path . "/img/profiles/" . sha1($id) . ".png";
+        if (file_exists($imagepath)) {
+            //return valid image name
+            return sha1($id);
+        } else {
+            return $g;
+        }
+    }
+
+    //update info
+    public function updateInfo($id, $data)
+    {
+        $this->db->where('uid', $id);
+        return $this->db->update($this->userTable, $data);
     }
 }

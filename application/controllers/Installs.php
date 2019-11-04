@@ -33,8 +33,8 @@ class Installs extends CI_Controller
             case 'reset':
                 $this->userResetTable();
                 break;
-            case 'testimony':
-                $this->userTestimonies();
+            case 'institutions':
+                $this->userInstitutions();
                 break;
             case 'notification':
                 $this->userNotifications();
@@ -57,6 +57,10 @@ class Installs extends CI_Controller
                 'constraint' => 11,
                 'auto_increment' => true,
             ),
+            'uinstitute' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+            ),
             'uname' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '200',
@@ -77,7 +81,7 @@ class Installs extends CI_Controller
                 'constraint' => '250',
                 'null' => false
             ),
-            'udob' => array(
+            'umatauth' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '200',
             ),
@@ -85,21 +89,10 @@ class Installs extends CI_Controller
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ),
-            'uimage' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '256',
-            ),
-            'ucountry' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '200',
-            ),
-            'ustreet' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '50',
-            ),
-            'utoken' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '512',
+            'utype' => array(
+                'type' => 'INT',
+                'constraint' => 5,
+                'default' => 1
             ),
             'ustatus' => array(
                 'type' => 'INT',
@@ -147,35 +140,57 @@ class Installs extends CI_Controller
     }
 
     //user testimonies table
-    private function userTestimonies()
+    private function userInstitutions()
     {
-        $testimonies = array(
-            'tid' => array(
+        $institutions = array(
+            'iid' => array(
                 'type' => 'INT',
                 'constraint' => 11,
                 'auto_increment' => true,
             ),
-            'tuid' => array(
+            'iname' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '120',
+            ),
+            'iemail' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '200',
             ),
-            'tbody' => array(
-                'type' => 'TEXT',
-                'constraint' => '1024',
+            'iphone' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '200',
             ),
-            'tprivacy' => array(
+            'iaddress' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '200',
+            ),
+            'iauth' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'unique' => true
+            ),
+            'iweight' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'default' => 20,
+            ),
+            'itoken' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '150',
+            ),
+            'istatus' => array(
                 'type' => 'INT',
                 'constraint' => 5,
-                'default' => 0,
-            )
+                'default' => 1,
+            ),
         );
 
         //make the first field a primary key
-        $this->dbforge->add_key('tid');
-        $this->dbforge->add_field($testimonies);
-        $this->dbforge->add_field(['tcreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
-        $this->dbforge->create_table('testimonies');
-        $this->json->O("Testimonies table created...", true);
+        $this->dbforge->add_key('iid');
+        $this->dbforge->add_field($institutions);
+        $this->dbforge->add_field(['icreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
+        $this->dbforge->create_table('institutions');
+        $this->json->O("Institution table created...", true);
     }
 
     //user notifications table
@@ -206,7 +221,7 @@ class Installs extends CI_Controller
         $this->dbforge->add_key('nid');
         $this->dbforge->add_field($notifications);
         $this->dbforge->add_field(['ncreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
-        $this->dbforge->create_table('notification');
+        $this->dbforge->create_table('notifications');
         $this->json->O("Notification table created...", true);
     }
 

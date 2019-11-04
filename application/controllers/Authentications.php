@@ -25,48 +25,97 @@ class Authentications extends CI_Controller
     {
         parent::__construct();
         //begin load libraries
+        $this->load->database();
         $this->load->library('jsonparser', null, 'json');
         $this->load->library("auth");
+        //load models
+        $this->load->model('muser');
+        $this->load->model('minst');
+    }
+
+    //welcome page as index
+    public function index()
+    {
+        $meta['title'] = "Welcome";
+        $meta['menu_num'] = -1;
+        $this->load->view('page-welcome', $meta);
+    }
+
+    //welcome page as landing
+    public function welcome()
+    {
+        $meta['title'] = "Welcome";
+        $meta['menu_num'] = -1;
+        $this->load->view('page-welcome', $meta);
+    }
+
+    //permissions
+    public function permission()
+    {
+        //define dynamics metas
+        $meta['title'] = 'Permission';
+        $meta['menu_num'] = -1;
+        $this->load->view('page-permission', $meta);
+    }
+
+    //create account
+    public function login()
+    {
         //check if login redirect for forgot
         if ($this->auth->islogged()) {
             redirect(base_url());
             return;
         }
-    }
-
-    //sign in methods
-    public function index()
-    {
         //define dynamics metas
         $meta['title'] = 'Login';
-        $meta['menu_code'] = 0;
+        $meta['menu_num'] = -1;
         $this->load->view('page-signin', $meta);
     }
 
     //create account
     public function createAccount()
     {
+        //check if login redirect for forgot
+        if ($this->auth->islogged()) {
+            redirect(base_url());
+            return;
+        }
         //define dynamics metas
         $meta['title'] = 'Create Account';
-        $meta['menu_code'] = 0;
+        $meta['minst'] = $this->minst->getInstitutions();
+        $meta['menu_num'] = -1;
         $this->load->view('page-create', $meta);
     }
 
     //create account
     public function reset()
     {
+        //check if login redirect for forgot
+        if ($this->auth->islogged()) {
+            redirect(base_url());
+            return;
+        }
         //define dynamics metas
         $meta['title'] = 'Reset';
-        $meta['menu_code'] = 0;
+        $meta['menu_num'] = 0;
         $this->load->view('page-reset', $meta);
     }
 
     //reset link
-    public function resetlink($token)
+    public function resetlink()
     {
+        //check if login redirect for forgot
+        if ($this->auth->islogged()) {
+            redirect(base_url());
+            return;
+        }
+        $token = $_GET['token'];
+        $token = $this->muser->verifyToken($token);
         //define dynamics metas
         $meta['title'] = ('Reset Link');
-        $meta['menu_code'] = 0;
+        $meta['menu_num'] = 0;
+        $meta['data'] = $token;
+        $meta['token'] = @$_GET['token'];
         $this->load->view('page-reset-link', $meta);
     }
 }

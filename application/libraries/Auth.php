@@ -32,7 +32,7 @@ class Auth
     //web login verifications
     public function islogged($redirect = false)
     {
-        $chk = $this->ctx->session->has_userdata("user");
+        $chk = $this->ctx->session->has_userdata(SESSION_NAME);
         if (!$chk) {
             if ($redirect) {
                 //redirect to login
@@ -41,7 +41,18 @@ class Auth
                 return false;
             }
         } else {
-            return true;
+            return $this->ctx->session->userdata(SESSION_NAME);
+        }
+    }
+
+    //get user session
+    public function getUser()
+    {
+        $chk = $this->ctx->session->has_userdata(SESSION_NAME);
+        if ($chk) {
+            return $this->ctx->session->userdata(SESSION_NAME);
+        } else {
+            return false;
         }
     }
 
@@ -52,8 +63,12 @@ class Auth
     }
 
     //validate and decode
-    public function validate($token)
+    public function forceRole($expect = 0)
     {
-
+        $userRole = (int)$this->getUser()['utype'];
+        if($expect!=$userRole){
+            //redirect to page not permitted
+            redirect(base_url('permission'));
+        }
     }
 }

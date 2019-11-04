@@ -8,7 +8,7 @@
 <div class="content content-fixed content-auth-alt">
     <div class="container d-flex justify-content-center ht-100p" id="app">
         <form onsubmit="return false">
-            <div class="mx-wd-300 wd-sm-450 ht-100p d-flex flex-column align-items-center justify-content-center">
+            <div class="wd-sm-350 ht-100p d-flex flex-row flex-column align-items-center justify-content-center">
                 <div class="wd-80p wd-sm-300 mg-b-15">
                     <img src="<?php echo base_url(); ?>assets/img/reset.png"
                          class="img-fluid" alt=""></div>
@@ -19,18 +19,19 @@
                 <strong>{{info}}</strong>
                 <div class="wd-100p d-flex flex-column flex-sm-row mg-b-40">
                     <input :disabled="disabled" v-model="user.email" type="text"
-                           class="form-control wd-sm-250 flex-fill"
+                           class="form-control wd-sm-200 flex-fill"
                            placeholder="Enter username or email address">
                     <button type="submit" :disabled="disabled" @click="btnReset"
-                            class="btn btn-brand-02 mg-sm-l-10 mg-t-10 mg-sm-t-0">Reset Password
+                            class="btn btn-danger mg-sm-l-10 mg-t-10 mg-sm-t-0">Reset Password
                     </button>
                 </div>
-                <div class="mg-t-0 tx-center">Remembered now ? <a
+                <div class="tx-12 mg-t-0 tx-center">Remembered now ? <a
                             href="<?php echo site_url(); ?>login">Login Now</a>
-                    <br>
-                    <span class="tx-12 tx-color-03">Lost everything ?, contact super user <a
-                                href="mailto:<?php echo config_item('meta')['su-email'] ?>"><?php echo config_item('meta')['su-email'] ?></a></span>
+                    <small class="tx-10"><br/>
+                        Lost everything ?, contact super user <a
+                                href="mailto:<?php echo config_item('meta')['su-email'] ?>"><?php echo config_item('meta')['su-email'] ?></a>
 
+                    </small>
                 </div>
 
             </div>
@@ -76,7 +77,7 @@
                 })
                 .catch(function (err) {
                     logs(err);
-                    setProgress(vue, "Unable to reset at the moment...", false);
+                    setProgress(vue, "Unable to change at the moment...", false);
                 })
         } else {
             setProgress(vue, "Check form fields and try again !", false);

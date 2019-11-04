@@ -20,8 +20,9 @@ class UnitTest extends CI_Controller
 
     public function index()
     {
-        $praram = @$_GET['cmd'];
-        $n = "AMeh friday ";
-        echo substr($n, -1);
+        $d = new DateTime();
+        $param = $d->getTimestamp();
+        $ts = 1571996889;
+        echo round($ts / 55555);
     }
 }

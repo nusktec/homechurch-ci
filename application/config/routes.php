@@ -50,10 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'landing'; //default index
-$route['login'] = 'authentications'; //default index (login)
+$route['welcome'] = 'authentications/welcome'; //default index welcome
+$route['permission'] = 'authentications/permission'; //default permission page
+$route['login'] = 'authentications/login'; //default index (login)
 $route['create-account'] = 'authentications/createAccount'; //default index (Create Account)
 $route['reset'] = 'authentications/reset'; //default index (forgot password)
-$route['resetlink/(:any)'] = 'authentications/resetlink/$token'; //default index (forgot password)
+$route['resetlink'] = 'authentications/resetlink'; //default index (forgot password)
 $route['logout'] = 'landing/logout'; //logout (clear session)
-$route['404_override'] = '';
+$route['404_override'] = 'landing/error_404';
 $route['translate_uri_dashes'] = FALSE;

@@ -37,12 +37,11 @@ class JsonParser
         $raw = json_decode($raw, true);
         if (count($raw) < 1) {
             //the var is empty
-            $this->O(array("status" => false, "data" => [], "msg" => "Supplied data is empty (filtering)"), true);
             return false;
         }
         foreach ($raw as $key => $value) {
-            if (empty($value)) {
-                return ("Supplied data contain an empty field(s)");
+            if (strlen($value) < 1) {
+                return false;
             }
         }
         //data is clean, output it
