@@ -33,9 +33,6 @@ class Installs extends CI_Controller
             case 'reset':
                 $this->userResetTable();
                 break;
-            case 'institutions':
-                $this->userInstitutions();
-                break;
             case 'notification':
                 $this->userNotifications();
                 break;
@@ -142,60 +139,6 @@ class Installs extends CI_Controller
         $this->dbforge->add_field(['rtime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
         $this->dbforge->create_table('resets');
         $this->json->O("Reset table created...", true);
-    }
-
-    //user testimonies table
-    private function userInstitutions()
-    {
-        $institutions = array(
-            'iid' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => true,
-            ),
-            'iname' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '120',
-            ),
-            'iemail' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '200',
-            ),
-            'iphone' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '200',
-            ),
-            'iaddress' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '200',
-            ),
-            'iauth' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '100',
-                'unique' => true
-            ),
-            'iweight' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'default' => 20,
-            ),
-            'itoken' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '150',
-            ),
-            'istatus' => array(
-                'type' => 'INT',
-                'constraint' => 5,
-                'default' => 1,
-            ),
-        );
-
-        //make the first field a primary key
-        $this->dbforge->add_key('iid');
-        $this->dbforge->add_field($institutions);
-        $this->dbforge->add_field(['icreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
-        $this->dbforge->create_table('institutions');
-        $this->json->O("Institution table created...", true);
     }
 
     //user notifications table

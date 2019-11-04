@@ -523,14 +523,18 @@ $config['proxy_ips'] = '';
 
 //constant meta data
 $config['meta'] = array(
-    'title' => 'Home Church',
-    'app' => 'HMC',
-    'desc' => 'Online Fellowship',
+    'title' => 'DHC',
+    'app' => 'DHC',
+    'desc' => 'Online Home Fellowship',
     'author' => 'RSC BYTE LTD',
     'su-email' => 'support@sotirtech.com'
 );
 //system control
-const SESSION_NAME = "user";
 const show_error_code = true;
 const allow_turbolinks = false;
 const assets_path = "assets";
+//Global constant
+const SESSION_NAME = "user";
+const USER_ROLE_1_NAME = "Member";
+const USER_ROLE_2_NAME = "Leader";
+const USER_ROLE_3_NAME = "Administrator";

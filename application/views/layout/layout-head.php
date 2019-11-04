@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Facebook -->
-    <meta property="og:url" content="<?php echo base_url()?>">
+    <meta property="og:url" content="<?php echo base_url() ?>">
     <meta property="og:title" content="<?php echo config_item('meta')['title'] ?>">
     <meta property="og:description" content="<?php echo config_item('meta')['desc'] ?>">
 
@@ -27,7 +27,8 @@
     <meta name="author" content="RSC BYTE LTD (http://rscbyte.com)">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/img/favi.png?cache=<?php echo rand(111,999); ?>">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="<?php echo base_url(); ?>assets/img/favi.png?cache=<?php echo rand(111, 999); ?>">
 
     <title><?php echo config_item('meta')['app'] . " | " . @$title ?></title>
 
@@ -39,7 +40,7 @@
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.auth.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.filemgr.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.chat.css">
     <!--Top progress bar-->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/nprogress.css">
     <meta name="turbolinks-cache-control" content="no-cache">
