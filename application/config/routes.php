@@ -50,7 +50,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'landing'; //default index
-$route['welcome'] = 'authentications/welcome'; //default index welcome
 $route['permission'] = 'authentications/permission'; //default permission page
 $route['login'] = 'authentications/login'; //default index (login)
 $route['create-account'] = 'authentications/createAccount'; //default index (Create Account)

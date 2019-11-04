@@ -57,10 +57,6 @@ class Installs extends CI_Controller
                 'constraint' => 11,
                 'auto_increment' => true,
             ),
-            'uinstitute' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-            ),
             'uname' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '200',
@@ -81,7 +77,11 @@ class Installs extends CI_Controller
                 'constraint' => '250',
                 'null' => false
             ),
-            'umatauth' => array(
+            'ucountry' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '200',
+            ),
+            'ustate' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '200',
             ),

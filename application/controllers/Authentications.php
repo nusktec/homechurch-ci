@@ -38,15 +38,7 @@ class Authentications extends CI_Controller
     {
         $meta['title'] = "Welcome";
         $meta['menu_num'] = -1;
-        $this->load->view('page-welcome', $meta);
-    }
-
-    //welcome page as landing
-    public function welcome()
-    {
-        $meta['title'] = "Welcome";
-        $meta['menu_num'] = -1;
-        $this->load->view('page-welcome', $meta);
+        $this->load->view('page-signin', $meta);
     }
 
     //permissions

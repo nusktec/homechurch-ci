@@ -43,7 +43,7 @@ class Landing extends CI_Controller
             }
         } else {
             //redirect to welcome
-            redirect(base_url('welcome'));
+            redirect(base_url('login'));
         }
     }
 

@@ -54,6 +54,28 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="d-flex justify-content-between mg-b-5">
+                                        <label class="mg-b-0-f">Country</label>
+                                    </div>
+                                    <select :disabled="disabled" v-model="user.country" name="country"
+                                            class="form-control">
+                                        <option selected value="">Choose</option>
+                                        <option value="M">Male</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex justify-content-between mg-b-5">
+                                        <label class="mg-b-0-f">State</label>
+                                    </div>
+                                    <input :disabled="disabled" v-model="user.state" name="state" type="text"
+                                           class="form-control"
+                                           placeholder="State" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="d-flex justify-content-between mg-b-5">
                                         <label class="mg-b-0-f">Password</label>
                                     </div>
                                     <input :disabled="disabled" v-model="user.pass1" name="pass1" type="password"
@@ -106,7 +128,9 @@
                         gender: "",
                         pass1: "",
                         pass2: "",
-                        acctype: 1
+                        country: '',
+                        state: '',
+                        address: ''
                     },
                     disabled: false,
                     info: "",
