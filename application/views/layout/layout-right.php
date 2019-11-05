@@ -124,28 +124,28 @@
         </div><!-- aside-loggedin -->
         <ul class="nav nav-aside">
             <li class="nav-label">Dashboard</li>
-            <li class="nav-item <? echo @$rm == 0 ? 'active' : '' ?>"><a href="<? echo base_url('user'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 0 ? 'active' : '' ?>"><a href="<? echo base_url('user'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-home mr-3" style="color: #8a8a8a;"></i> Home</span></a></li>
-            <li class="nav-item <? echo @$rm == 1 ? 'active' : '' ?>"><a href="<? echo base_url('user/profile'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 1 ? 'active' : '' ?>"><a href="<? echo base_url('user/profile'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-user mr-3" style="color: #8a8a8a;"></i> Profile</span></a></li>
-            <li class="nav-item <? echo @$rm == 2 ? 'active' : '' ?>"><a href="<? echo base_url('user/messages'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 2 ? 'active' : '' ?>"><a href="<? echo base_url('user/messages'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-envelope mr-3" style="color: #8a8a8a;"></i> Messages</span></a></li>
-            <li class="nav-item <? echo @$rm == 3 ? 'active' : '' ?>"><a href="<? echo base_url('user/notifications'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 3 ? 'active' : '' ?>"><a href="<? echo base_url('user/notifications'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-bell mr-3" style="color: #8a8a8a;"></i> Notifications</span></a></li>
-            <li class="nav-item <? echo @$rm == 4 ? 'active' : '' ?>"><a href="<? echo base_url('user/submit-home'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 4 ? 'active' : '' ?>"><a href="<? echo base_url('user/submit-home'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-pen mr-3" style="color: #8a8a8a;"></i> Submit Home</span></a></li>
-            <li class="nav-item <? echo @$rm == 5 ? 'active' : '' ?>"><a href="<? echo base_url('user/chats'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 5 ? 'active' : '' ?>"><a href="<? echo base_url('user/chats'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-users mr-3" style="color: #8a8a8a;"></i> Chats</span></a></li>
-            <li class="nav-item <? echo @$rm == 6 ? 'active' : '' ?>"><a href="<? echo base_url('user/testimonies'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 6 ? 'active' : '' ?>"><a href="<? echo base_url('user/testimonies'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-sticky-note mr-3" style="color: #8a8a8a;"></i> Testimonies</span></a></li>
-            <li class="nav-item <? echo @$rm == 7 ? 'active' : '' ?>"><a href="<? echo base_url('user/testimonies'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 7 ? 'active' : '' ?>"><a href="<? echo base_url('user/testimonies'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-map-marker mr-3" style="color: #8a8a8a;"></i> Nearby Locations</span></a></li>
 
