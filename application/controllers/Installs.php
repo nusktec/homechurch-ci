@@ -38,7 +38,17 @@ class Installs extends CI_Controller
                 break;
             case 'message':
                 $this->userMessages();
-                break;
+                break;    
+            case 'testimony':
+                $this->userTestimonies();
+                break;    
+            case 'migrate_all':
+                $this->userTestimonies();
+                $this->userTable();
+                $this->userResetTable();
+                $this->userNotifications();
+                $this->userMessages();
+                break;    
             default:
                 $this->json->O("Not a valid command", true);
         }
@@ -198,14 +208,64 @@ class Installs extends CI_Controller
                 'type' => 'INT',
                 'constraint' => 11,
                 'default' => 0
+            ),
+            'mtitle' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'default' => 0
             )
         );
 
+        if( $this->db->table_exists('rs_messages') ){
+
+            $query = "DROP TABLE rs_messages;";
+
+            $this->db->query($query);
+
+        } 
         //make the first field a primary key
         $this->dbforge->add_key('mid');
         $this->dbforge->add_field($messages);
         $this->dbforge->add_field(['mcreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
         $this->dbforge->create_table('messages');
         $this->json->O("Messages table created...", true);
+    }
+    private function userTestimonies()
+    {
+        $testimonies = array(
+            'tid' => array(
+                'type' => 'INT',
+                'constraint' => 111,
+                'auto_increment' => true,
+            ),
+            'tby' => array(
+                'type' => 'INT',
+                'constraint' => 111,
+            ),
+            'tsummary' => array(
+                'type' => 'TEXT',
+                'constraint' => 205,
+            ),
+            'ttags' => array(
+                'type' => 'TEXT',
+                'constraint' => 30,
+            ),
+            'tdesc' => array(
+                'type' => 'TEXT',
+                'constraint' => '1024'
+            ),
+            'ttitle' => array(
+                'type' => 'TEXT',
+                'constraint' => 21,
+                
+            )
+        );
+
+        //make the first field a primary key
+        $this->dbforge->add_key('tid');
+        $this->dbforge->add_field($testimonies);
+        $this->dbforge->add_field(['tcreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP']);
+        $this->dbforge->create_table('testimonies');
+        $this->json->O("testimony table created...", true);
     }
 }

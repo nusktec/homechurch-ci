@@ -26,7 +26,7 @@ include __DIR__ . '/../../layout/layout-head.php'; ?>
             <span class="tx-12 tx-color-03">Contact developer <a href="http://rscbyte.com">rscbyte.com</a></span>
             <?php if (show_error_code) { ?>
                 <code>
-                    <?php echo json_encode($error); ?>
+                    <?php echo $error; ?>
                 </code>
             <?php } ?>
         </div>

@@ -43,7 +43,7 @@ class Landing extends CI_Controller
             }
         } else {
             //redirect to welcome
-            redirect(base_url('login'));
+            redirect(base_url('welcome'));
         }
     }
 
@@ -54,6 +54,11 @@ class Landing extends CI_Controller
         //clear session and set to login
         $this->auth->logout();
         redirect(base_url());
+    }
+
+    public function welcome()
+    {
+        $this->load->view('page-welcome');
     }
 
     //404 error page

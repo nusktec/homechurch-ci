@@ -36,6 +36,7 @@ class Messages extends CI_Controller
         $this->uid = $this->utemp['uid'];
         //main default loader
         $this->user = $this->muser->get($this->uid);
+        $this->allUser = $this->muser->getAll($this->uid);
         //trigger roles
         $this->auth->forceRole(SUPER_ROLE);
     }
@@ -49,11 +50,13 @@ class Messages extends CI_Controller
         $meta['desc'] = "Messages"; //description
         $meta['rm'] = 2; //right menu num
         $meta['user'] = $this->user; //user data
+        $meta['allUser'] = $this->allUser; //user data
         $meta['avatar'] = $this->muser->profileImg($this->uid, $this->utemp['ugender']) . ".png?" . rand(111, 999);//profile pics
         $meta['notifications'] = $this->mnoti->get($this->uid); //notifications data
-        $meta['messages'] = $this->mmsg->getNotifications($this->uid); //messages alerts iterations
-        $meta['messages_raw'] = $this->mmsg->get($this->uid); //messages alerts iterations
-        $meta['script'] = ['user-messages', 'side-bar']; //script to be loaded in array
+        $meta['messages'] = $this->mmsg->getNotifications($this->uid); //messages alerts iteration
+        $meta['messages_raw'] = $this->mmsg->getMessageTo($this->uid); //messages alerts iterations
+        $meta['messages_from'] = $this->mmsg->getMessageFrom($this->uid); //messages alerts iterations
+        $meta['script'] = ['helpers','user-messages', 'side-bar']; //script to be loaded in array
         //load child view first
         $meta['contents'] = $this->load->view("user/page-messages", $meta, true);
         $this->load->view("layout/template", $meta);

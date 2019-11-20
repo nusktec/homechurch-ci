@@ -6,6 +6,7 @@
  * Time: 5:10 PM
  */
 ?>
+
 <footer class="footer">
     <div>
         <span>&copy; 2018-<?php echo date("Y"); ?> Home Church. </span>

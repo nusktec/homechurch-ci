@@ -56,5 +56,6 @@ $route['create-account'] = 'authentications/createAccount'; //default index (Cre
 $route['reset'] = 'authentications/reset'; //default index (forgot password)
 $route['resetlink'] = 'authentications/resetlink'; //default index (forgot password)
 $route['logout'] = 'landing/logout'; //logout (clear session)
+$route['welcome'] = 'landing/welcome'; //logout (clear session)
 $route['404_override'] = 'landing/error_404';
 $route['translate_uri_dashes'] = FALSE;

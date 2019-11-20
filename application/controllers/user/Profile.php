@@ -52,7 +52,7 @@ class Profile extends CI_Controller
         $meta['avatar'] = $this->muser->profileImg($this->uid, $this->utemp['ugender']) . ".png?" . rand(111, 999);//profile pics
         $meta['notifications'] = $this->mnoti->get($this->uid); //notifications data
         $meta['messages'] = $this->mmsg->getNotifications($this->uid); //messages alerts iterations
-        $meta['script'] = ['user-profile', 'side-bar']; //script to be loaded in array
+        $meta['script'] = ['user-profile', 'side-bar','helpers']; //script to be loaded in array
         //load child view first
         $meta['contents'] = $this->load->view("user/page-profile", $meta, true);
         $this->load->view("layout/template", $meta);

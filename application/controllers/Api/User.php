@@ -20,6 +20,10 @@ class User extends CI_Controller
         $this->load->model('memail'); //email model
         $this->load->model('muser'); //user model
         $this->load->model('minst'); //institutions model
+        $this->load->model('minst'); //institutions model
+        $this->load->model('mmsg'); //institutions model
+        $this->load->model('mtst'); //institutions model
+        $this->load->model('mhmch'); //institutions model
         //formulate tables
         $this->userTable = $this->db->dbprefix . "users";
         //start every authentications
@@ -83,6 +87,23 @@ class User extends CI_Controller
         }
         //insert successful !
         $this->json->O(array("status" => $status, "data" => array(), "msg" => $error), true);
+    }
+    //get all users
+    public function get_all()
+    {
+        $error = "Error Fetching all users, reload and try again";
+        $status = true;
+        //check for email validate, password match
+        //space name
+      
+        //check if user exist
+        
+           $data = $this->muser->getAll();
+            $error = "Successfully registered, redirect login in 3sec";
+            $status = true;
+        
+        //insert successful !
+        $this->json->O(array("status" => $status, "data" => $data, "msg" => $error), true);
     }
 
     //login user
@@ -289,4 +310,119 @@ class User extends CI_Controller
         }
         //
     }
+
+    //MESSAGE API
+    public function sendMsg()
+    {
+        $error = "Not a valid data passed";
+        $status = true;
+        $rawjson = [];
+
+        //get raw inouts
+        $data = $this->json->G();
+        if (!$data) {
+            $this->json->O(array("status" => false, "data" => [], "msg" => $error), true);
+            return;
+        }
+        if ($this->mmsg->send($data)) {
+
+            $error = "Success !";
+            $this->json->O(array("status" => true, "data" => $data, "msg" => $error), true);
+        } else {
+            console.log("err");
+            $error = "Error sending message";
+            $this->json->O(array("status" => false, "data" => $data, "msg" => $error), true);
+        }
+    }
+    public function delMsg()
+    {
+        $error = "Not a valid data passed";
+        $status = true;
+        $rawjson = [];
+
+        //get raw inouts
+        $data = $this->json->G();
+        if (!$data) {
+            $this->json->O(array("status" => false, "data" => [], "msg" => $error), true);
+            return;
+        }
+        //
+        if ($this->mtst->create($data)) {
+            $error = "Success !";
+            $this->json->O(array("status" => true, "data" => $data, "msg" => $error), true);
+        } else {
+            $error = "Error deleting message";
+            $this->json->O(array("status" => false, "data" => $data, "msg" => $error), true);
+        }
+    }
+    /** END OF MESSAGE API */
+    //TESTIMONY API
+    public function createTstm()
+    {
+        $error = "Not a valid data passed";
+        $status = true;
+        $rawjson = [];
+        
+        //get raw inouts
+        $data = $this->json->G();
+        if (!$data) {
+            $this->json->O(array("status" => false, "data" => [], "msg" => $error), true);
+            return;
+        }
+        //
+        
+        if ($this->mtst->add($data)) {
+            $error = "Success !";
+            $this->json->O(array("status" => true, "data" => $data, "msg" => $error), true);
+        } else {
+            $error = "Error deleting message";
+            $this->json->O(array("status" => false, "data" => $data, "msg" => $error), true);
+        }
+    }
+    public function delTstm()
+    {
+        $error = "Not a valid data passed";
+        $status = true;
+        $rawjson = [];
+    
+        //get raw inouts
+        $data = $this->json->G();
+        if (!$data) {
+            $this->json->O(array("status" => false, "data" => [], "msg" => $error), true);
+            return;
+        }
+        //
+        if ($this->mtst->delete($data)) {
+            $error = "Success !";
+            $this->json->O(array("status" => true, "data" => $data, "msg" => $error), true);
+        } else {
+            $error = "Error deleting message";
+            $this->json->O(array("status" => false, "data" => $data, "msg" => $error), true);
+        }
+    }
+
+    //SUBMIT HOME CHURCH API
+    public function submitHomeChurch(){
+        $error = "Not a valid data passed";
+        $status = true;
+        $rawjson = [];
+        
+        //get raw inouts
+        $data = $this->json->G();
+        if (!$data) {
+            $this->json->O(array("status" => false, "data" => [], "msg" => $error), true);
+            return;
+        }
+        //
+        
+        if ($this->mhmch->submitHome($data)) {
+            $error = "Success !";
+            $this->json->O(array("status" => true, "data" => $data, "msg" => $error), true);
+        } else {
+            $error = "Error deleting message";
+            $this->json->O(array("status" => false, "data" => $data, "msg" => $error), true);
+        }
+    }
+    
+    
 }

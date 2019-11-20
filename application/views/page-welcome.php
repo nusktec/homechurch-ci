@@ -9,9 +9,15 @@
 <div class="content content-fixed content-auth-alt">
     <div class="container ht-100p tx-center">
         <div class="row justify-content-center">
+            <div>
+                <h3 class="tx-center">Welcome</h3>
+            <p>This is the first Online Home Church App, Explore to know more</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-10 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
                 <div class="tx-100 lh-1"><i class="icon ion-ios-clock"></i></div>
-                <h3 class="mg-b-25">Students</h3>
+                <h3 class="mg-b-25">Attendance</h3>
                 <p class="tx-color-03 mg-b-25">Marking your attendance just one step left, just the quick information we
                     wants from you.</p>
                 <button data-toggle="modal" href="#modalMA" class="btn btn-danger btn-block tx-13 tx-bold">Mark

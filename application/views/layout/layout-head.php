@@ -31,16 +31,30 @@
           href="<?php echo base_url(); ?>assets/img/favi.png?cache=<?php echo rand(111, 999); ?>">
 
     <title><?php echo config_item('meta')['app'] . " | " . @$title ?></title>
-
+<!-- Include stylesheet -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <!-- vendor css -->
     <link href="<?php echo base_url(); ?>lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>lib/prismjs/themes/prism-vs.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>lib/quill/quill.core.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>lib/quill/quill.snow.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>lib/quill/quill.bubble.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>lib/select2/css/select2.min.css" rel="stylesheet">
 
+
+    <link href="<?php echo base_url(); ?>lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <script src="<?php echo base_url(); ?>lib/jquery/jquery.min.js"></script>
     <!--Main CSS Files here-->
     <!-- DashForge CSS -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.mail.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.auth.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.chat.css">
+
     <!--Top progress bar-->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/nprogress.css">
     <meta name="turbolinks-cache-control" content="no-cache">

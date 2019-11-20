@@ -111,6 +111,20 @@
 
     </div><!-- row -->
 </div>
+<!-- TOAST DIV -->
+<div id="toastme" data-delay="3000" class="toast bg-success pos-absolute t-10 " style="z-index:9000" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <h6 class="tx-inverse  tx-14 mg-b-0 mg-r-auto">Notification</h6>
+    <!-- <small>0 mins ago</small> -->
+    <button type="button" class="ml-2 mb-1 close tx-normal" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body text-white" ref="body" id="tstbody" data-cs>
+    Message Sucessfully sent.
+  </div>
+</div>
+<!--END OF TOAST DIV -->
 <script>
     var user = <?php echo json_encode($user); ?>;
 </script>

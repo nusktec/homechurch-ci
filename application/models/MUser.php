@@ -122,4 +122,13 @@ class MUser extends CI_Model
         $this->db->where('uid', $id);
         return $this->db->update($this->userTable, $data);
     }
+
+
+    public function getAll ($fn)
+    {
+        $this->db->where("uid !=",$fn);
+        $res = $this->db->get($this->userTable);
+        return $res->result_array();
+        
+    }
 }

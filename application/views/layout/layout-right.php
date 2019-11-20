@@ -1,10 +1,10 @@
-<aside class="aside aside-fixed">
+<aside class="aside aside-fixed minimize" id="eclat-aside">
     <div class="aside-header">
         <a href="<? echo base_url(); ?>" class="aside-logo">Home<span>Church</span></a>
         <a href="" class="aside-menu-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 class="feather feather-menu">
+                 class="feather feather-menu" id="eclat_toggle">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -37,7 +37,7 @@
                 $num_sms_unread = !$msg_noti ? 0 : $msg_noti;
                 ?>
                 <div class="aside-alert-link">
-                    <a href="<? echo base_url('messages') ?>" class="<? echo $num_sms_unread > 0 ? 'new' : ''; ?>"
+                    <a href="<? echo base_url('user/messages') ?>" class="<? echo $num_sms_unread > 0 ? 'new' : ''; ?>"
                        data-toggle="tooltip" title=""
                        data-original-title="You have <? echo $num_sms_unread; ?> unread messages">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -136,7 +136,7 @@
             <li class="nav-item <? echo @(int)$rm == 3 ? 'active' : '' ?>"><a href="<? echo base_url('user/notifications'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-bell mr-3" style="color: #8a8a8a;"></i> Notifications</span></a></li>
-            <li class="nav-item <? echo @(int)$rm == 4 ? 'active' : '' ?>"><a href="<? echo base_url('user/submit-home'); ?>"
+            <li class="nav-item <? echo @(int)$rm == 4 ? 'active' : '' ?>"><a href="<? echo base_url('user/submitHome'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-pen mr-3" style="color: #8a8a8a;"></i> Submit Home</span></a></li>
             <li class="nav-item <? echo @(int)$rm == 5 ? 'active' : '' ?>"><a href="<? echo base_url('user/chats'); ?>"
@@ -144,8 +144,9 @@
                     <span><i class="fa fa-users mr-3" style="color: #8a8a8a;"></i> Chats</span></a></li>
             <li class="nav-item <? echo @(int)$rm == 6 ? 'active' : '' ?>"><a href="<? echo base_url('user/testimonies'); ?>"
                                                                          class="nav-link">
-                    <span><i class="fa fa-sticky-note mr-3" style="color: #8a8a8a;"></i> Testimonies</span></a></li>
-            <li class="nav-item <? echo @(int)$rm == 7 ? 'active' : '' ?>"><a href="<? echo base_url('user/testimonies'); ?>"
+                    <span><i class="fa fa-sticky-note mr-3" style="color: #8a8a8a;"></i> Testimonies</span></a>
+            </li>
+            <li class="nav-item <? echo @(int)$rm == 7 ? 'active' : '' ?>"><a href="<? echo base_url('user/nearbyLocation'); ?>"
                                                                          class="nav-link">
                     <span><i class="fa fa-map-marker mr-3" style="color: #8a8a8a;"></i> Nearby Locations</span></a></li>
 
